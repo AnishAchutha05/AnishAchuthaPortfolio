@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anish Achutha</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -216,6 +221,9 @@ footer{padding-block:40px 56px;border-top:1px solid var(--line)}
   .pcard .go{padding-top:18px}
   .card{border-radius:22px}
 }
+@media (max-height:620px){
+  .pcard{position:relative;top:auto}
+}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .hero-in>*,.rv{animation:none!important;opacity:1!important;transform:none!important}
@@ -225,7 +233,8 @@ footer{padding-block:40px 56px;border-top:1px solid var(--line)}
   .btn,.btn .ic{transition:none}
 }
 </style>
-
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="dl" viewBox="0 0 16 16"><path d="M8 2.5v8M4.8 7.6L8 10.8l3.2-3.2M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -247,7 +256,7 @@ footer{padding-block:40px 56px;border-top:1px solid var(--line)}
     </nav>
     <div class="nav-actions">
       <!-- RESUME: save your PDF next to this file as "resume.pdf", or change the href below to wherever it is hosted. -->
-      <a class="btn btn-light" id="resume-link" href="AnishAchuthaResume.pdf" target="_blank" rel="noopener"><svg class="ic"><use href="#dl"/></svg> Resume</a>
+      <a class="btn btn-light" id="resume-link" href="resume.pdf" target="_blank" rel="noopener"><svg class="ic"><use href="#dl"/></svg> Resume</a>
       <a class="btn btn-line nav-contact" href="#contact">Get in touch</a>
     </div>
   </div>
@@ -261,7 +270,7 @@ footer{padding-block:40px 56px;border-top:1px solid var(--line)}
   <div class="wrap hero-grid">
     <div class="hero-in">
       <h1>I build <mark>multi-agent</mark> systems and privacy-first AI tools.</h1>
-      <p class="lede">Computer science student at JSS Academy of Technical Education, Bengaluru. Research intern at IIT Guwahati, working on scalable AI Systems and Backend Systems.</p>
+      <p class="lede">Computer science student at JSS Academy of Technical Education, Bengaluru. Research intern at IIT Guwahati, working on digital twins for water-quality monitoring.</p>
       <p class="meta">Python · FastAPI · LangGraph · GCP</p>
       <div class="cta-row">
         <a class="btn btn-light" href="#work">View projects <svg class="ic"><use href="#arr"/></svg></a>
@@ -633,6 +642,7 @@ footer{padding-block:40px 56px;border-top:1px solid var(--line)}
     if (reduce) return;
     for (var i = 0; i < cards.length - 1; i++){
       var c = cards[i], n = cards[i+1];
+      if (getComputedStyle(c).position !== 'sticky'){ c.style.transform = ''; c.style.filter = ''; continue; }
       var top = parseFloat(getComputedStyle(c).top) || 0;
       var p = clamp(1 - (n.getBoundingClientRect().top - top) / Math.max(n.offsetHeight, 1));
       c.style.transform = 'scale(' + (1 - 0.045 * p).toFixed(4) + ')';
@@ -659,3 +669,5 @@ footer{padding-block:40px 56px;border-top:1px solid var(--line)}
   });
 })();
 </script>
+</body>
+</html>
